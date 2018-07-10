@@ -1,7 +1,7 @@
-import axios from "axios";
+import axios from 'axios';
 
-const apiUsers = "https://jsonplaceholder.typicode.com/users";
-const delUsers = "https://jsonplaceholder.typicode.com";
+const apiUsers = 'https://jsonplaceholder.typicode.com/users';
+const delUsers = 'https://jsonplaceholder.typicode.com';
 
 // Get
 export default {
@@ -10,10 +10,8 @@ export default {
     return response.data;
   },
   // getUsers() {
-  //   axios.get(apiUsers).then(resp => {
-  //     return resp.data
-  //   })
-  // }
+  //   return axios.get(apiUsers).then(resp => resp.data);
+  // },
 
   async getPosts(user) {
     let profile = await axios.get(`${apiUsers}/${user}`);
@@ -24,14 +22,14 @@ export default {
   },
 
   async newPost(data) {
-    let { userId, post } = data;
-    let newPost = await axios.post(`${apiUsers}/${userId}/posts`, post);
+    const { userId, post } = data;
+    const newPost = await axios.post(`${apiUsers}/${userId}/posts`, post);
     return newPost.data;
   },
 
   async deletePost(data) {
-    let { userId, post } = data;
-    let deletedPost = await axios.delete(`${delUsers}/posts/${post}`);
+    const { userId, post } = data;
+    const deletedPost = await axios.delete(`${delUsers}/posts/${post}`);
     return deletedPost.data;
-  }
+  },
 };
