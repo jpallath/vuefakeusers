@@ -1,7 +1,7 @@
-import axios from 'axios';
+import axios from "axios";
 
-const apiUsers = 'https://jsonplaceholder.typicode.com/users';
-const delUsers = 'https://jsonplaceholder.typicode.com';
+const apiUsers = "https://jsonplaceholder.typicode.com/users";
+const delUsers = "https://jsonplaceholder.typicode.com";
 
 // Get
 export default {
@@ -31,5 +31,13 @@ export default {
     const { userId, post } = data;
     const deletedPost = await axios.delete(`${delUsers}/posts/${post}`);
     return deletedPost.data;
-  },
+  }
 };
+
+function getUserAccount(user) {
+  return axios.get(`${apiUsers}/${user}`);
+}
+
+function getUserPermissions(user) {
+  return axios.get(`${apiUsers}/${user}/posts`);
+}
