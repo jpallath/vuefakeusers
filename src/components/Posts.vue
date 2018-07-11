@@ -2,7 +2,7 @@
   <div class="posts">
 <h1> Hello {{user ? user.name : "Loading"}}</h1>
 <ul>Posts
-    <PostListItem v-for="post in posts" v-bind:key="post.id" v-bind:id="post.id" v-bind:body="post.body" />
+    <PostListItem class="post-item" v-for="post in posts" v-bind:key="post.id" v-bind:id="post.id" v-bind:body="post.body" />
     <NewPost />
 </ul>
 

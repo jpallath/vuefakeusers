@@ -14,10 +14,16 @@ export default {
   // },
 
   async getPosts(user) {
-    let profile = await axios.get(`${apiUsers}/${user}`);
-    profile = profile.data;
-    let response = await axios.get(`${apiUsers}/${user}/posts`);
-    response = response.data;
+    // let profile = await axios.get(`${apiUsers}/${user}`);
+    // profile = profile.data;
+    // let response = await axios.get(`${apiUsers}/${user}/posts`);
+    // response = response.data;
+    let data = await axios.all([
+      getUserAccount(user),
+      getUserPermissions(user)
+    ]);
+    let profile = data[0].data;
+    let response = data[1].data;
     return { profile, response };
   },
 
